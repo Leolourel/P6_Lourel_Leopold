@@ -1,6 +1,14 @@
 const http = require('http');
 const app = require('./app');
 
+
+dotenv = require('dotenv').config();
+
+// Variables d'environnement Dotenv
+const hostnamedotenv = process.env.HOST;
+const portdotenv = process.env.PORT;
+const keydotenv = process.env.KEY;
+
 const normalizePort = val => {
     const port = parseInt(val, 10);
 

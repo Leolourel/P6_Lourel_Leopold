@@ -10,11 +10,12 @@ const userRoutes = require('./routes/user');
 const Sauce = require('./models/Sauce');
 
 
-require('dotenv').config();
 
 //Connexion a mongo DB
 mongoose.connect('mongodb+srv://leolourel:lourel31@pekocko.cltmy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-    { useNewUrlParser: true,
+    {
+        useCreateIndex: true,
+        useNewUrlParser: true,
         useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
