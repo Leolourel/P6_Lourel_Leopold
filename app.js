@@ -2,10 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const helmet = require('helmet');
+const nocache = require('nocache');
 
 const sauceRoutes = require ('./routes/sauces');
 const userRoutes = require('./routes/user');
 const Sauce = require('./models/Sauce');
+
+
+require('dotenv').config();
 
 //Connexion a mongo DB
 mongoose.connect('mongodb+srv://leolourel:lourel31@pekocko.cltmy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
@@ -15,6 +20,12 @@ mongoose.connect('mongodb+srv://leolourel:lourel31@pekocko.cltmy.mongodb.net/myF
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
+
+app.use(helmet());
+app.use(nocache());
+
+
+
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
