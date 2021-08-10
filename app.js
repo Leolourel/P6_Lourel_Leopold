@@ -1,4 +1,4 @@
-// Ajout des modules npm
+// framework qui permet le developpement serveur sur nodejs
 const express = require('express');
 // Extraction de l'objet JSON des requetes POST
 const bodyParser = require('body-parser');
@@ -33,7 +33,7 @@ mongoose.connect(process.env.DB_CONNECT, {
 //Création de l'app express
 const app = express();
 
-//Middleware debloquant certains système de sécurité CORS, permet à nchaque utilisateur de faire des requetes depuis son navigateurs
+//Middleware debloquant certains système de sécurité CORS, permet à nchaque utilisateur de faire des requetes depuis son navigateurs, permet au front de communiquer avec le back
 app.use((req, res, next) => {
     // les ressources peuvent étre partagées depuis n'importe quelle origine
     res.setHeader('Access-Control-Allow-Origin', '*');

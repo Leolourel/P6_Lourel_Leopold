@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// le modèle de sauce prévue dans la note de cadrage.
+// Création du schema mongoose comme précisé dans la note de cadrage, id généré automatiquement par mongoDB
 const sauceSchema = mongoose.Schema({
 
     userId:             { type: String,     required: true },
@@ -17,4 +17,5 @@ const sauceSchema = mongoose.Schema({
     usersDisliked:      { type: Array,   required: false },
 });
 
+// Exporte du shéma de données, pour pouvoir utiliser ce modèle pour intéragir avec l'application
 module.exports = mongoose.model('Sauce', sauceSchema);

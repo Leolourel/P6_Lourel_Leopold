@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');    // utilisation de mongoose. demandé par la note de cadrage.
-const uniqueValidator = require('mongoose-unique-validator');  // plugin demandé
+const mongoose = require('mongoose');    // utilisation de mongoose
+const uniqueValidator = require('mongoose-unique-validator');  // package qui valide l'unique création d'un user par email
 
 // Modèle user dans la note de cadrage
 const userSchema = mongoose.Schema({
@@ -10,5 +10,5 @@ const userSchema = mongoose.Schema({
 // Plugin qui restreint à une création de user par adresse mail
 userSchema.plugin(uniqueValidator);
 
-
+// Exporte du shéma de données, pour pouvoir utiliser ce modèle pour intéragir avec l'application
 module.exports = mongoose.model('User', userSchema);
