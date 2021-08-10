@@ -2,13 +2,33 @@ const User = require('../models/User'); // Model user créer avec le schema mong
 const bcrypt = require('bcrypt'); // hasher le mot de passe
 const jwt = require('jsonwebtoken'); //Permet d'attribuer un token à un utilisateur au moment ou il se connecte
 
+//Hashage de l'adresse mail qui va servir au route signup et login
+function hashEmail(sentence) {
+    if (typeof sentence === "string") {
+        let headMail = sentence.slice(0,1);
+        let bodyMail = sentence.slice(1, sentence.length-4);
+        let bottomMail = sentence.slice(sentence.length-4, sentence.length);
+        let final = [];
+        var masked = bodyMail.split('');
+        var maskedMail = [];
+        for(let i in masked) {
+            masked[i] = '*';
+            maskedMail += masked[i];
+        }
+        final += headMail + maskedMail + bottomMail
+        return final;
+    }
+    console.log(sentence + " is not a mail");
+    return false
+}
+
 
 //Sauvegarde un nouvel utilisateur et crypte son mot de passe avec bcrypt
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)  //on hash le passeword avec un salt de 10 (nombre de fois ou le mdp sera hasher)
         .then(hash => { //On recupére le mdp hasher qui va etre enregistrer en tant que nouvel utilisateur dans MongoDB
             const user = new User({ //Création du nouvel utilisateur avec le model mongoose
-                email: req.body.email,  //email encodé sauvegardé
+                email: hashEmail(req.body.email),  //email encodé sauvegardé
                 password: hash  // on assigne le hash obtenu comme valeur de la propriété password de l'objet user
             });
             user.save() //On enregistre l'user dans la base de données
@@ -28,7 +48,7 @@ exports.signup = (req, res, next) => {
 //si oui il vérifie son mot de passe, s'il est bon il renvoie un TOKEN contenant l'id de l'utilisateur, sinon il renvoie une erreur
 exports.login = (req, res, next) => {
     // On doit trouver l'utilisateur dans la BDD qui correspond à l'adresse entrée par l'utilisateur
-    User.findOne({ email: req.body.email })
+    User.findOne({ email: hashEmail(req.body.email) })
         .then(user => {
             if (!user) {
                 //Si l'adresse mail ne correspont pas on renvoi un erreur 401
