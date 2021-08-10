@@ -22,31 +22,7 @@ exports.signup = (req, res, next) => {
         });
 };
 
-//connexion d'un utilisateur
-// exports.login = (req, res, next) => {
-//     User.findOne({ email: req.body.email })  // on recherche l'équivalent du mail encondé
-//         .then(user => {
-//             if (!user) {
-//                 return res.status(401).json({ error: 'Utilisateur non trouvé !' });
-//             }
-//             bcrypt.compare(req.body.password, user.password) //si email ok on compare le mot de passe avec bcryot
-//                 .then(valid => {
-//                     if (!valid) {
-//                         return res.status(401).json({ error: 'Mot de passe incorrect !' });
-//                     }
-//                     res.status(200).json({
-//                         userId: user._id,  // on renvoi le user._id (genere par mongoDB)
-//                         token: jwt.sign(   // on renvoi un token d'authentification
-//                             { userId: user._id },
-//                             'RANDOM_TOKEN_SECRET',
-//                             { expiresIn: '24h'}  //date d'expiration du token
-//                         )
-//                     });
-//                 })
-//                 .catch(error => res.status(500).json({ error }));
-//         })
-//         .catch(error => res.status(500).json({ error }));
-// };
+
 exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
         .then(user => {

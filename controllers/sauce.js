@@ -1,5 +1,6 @@
+//Récupération du modèle sauce
 const Sauce = require('../models/Sauce');
-//permet d'acceder au file-system
+//permet d'acceder au file-system -> permet de gérer les téléchargements et modifications d'images
 const fs = require('fs');
 
 //acceder à toutes les sauces
