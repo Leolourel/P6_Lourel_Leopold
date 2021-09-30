@@ -1,12 +1,12 @@
 # P6_Lourel_Leopold
 
-Installation : 
+# Installation : 
 
 
 Cloner ce projet depuis GitHub.
 
 
-Faire tourner le Frontend
+# Faire tourner le Frontend
 
 
 Ouvrir le terminal sur ce dossier et exécuter npm install pour installer les dépendances.
@@ -17,7 +17,7 @@ Rendez-vous sur http://localhost:4200.
 L'application va se recharger automatiquement si vous modifiez un fichier source.
 
 
-Faire tourner le Backend
+# Faire tourner le Backend
 
 
 Ouvrir le terminal sur ce dossier.
@@ -33,7 +33,7 @@ nodemon server via le terminal sur le backend
 Se connecter à l'url : http://localhost:4200
 
 
-Connexion
+# Connexion
 
 
 Ouvrir localhost:4200 dans votre navigateur.
