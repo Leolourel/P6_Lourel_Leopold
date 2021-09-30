@@ -38,3 +38,5 @@ Se connecter à l'url : http://localhost:4200
 
 Ouvrir localhost:4200 dans votre navigateur.
 Pour s'inscrire sur l'application, l'utilisateur doit fournir un email et un mot de passe
+
+Brief du projet : <https://s3.eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P6/Ancienne+version_Construisez+une+API+se%CC%81curise%CC%81e+pour+une+application+davis+gastronomiques_Mission.pdf>
